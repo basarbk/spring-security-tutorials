@@ -18,6 +18,10 @@ public class DemoApplication {
 		return "This is secured endpoint";
 	}
 
+	@GetMapping("/secured-admin")
+	public String securedAdmin(){
+		return "Only admin can see this";
+	}
 	
 	@GetMapping("/public")
 	public String pub(){
