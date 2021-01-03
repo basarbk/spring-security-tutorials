@@ -16,8 +16,8 @@ public class DemoApplication {
 	}
 
 	@GetMapping("/secured")
-	public String secured(Authentication authentication){
-		return authentication.getName();
+	public Object secured(Authentication authentication){
+		return authentication.getPrincipal();
 	}
 
 	@GetMapping("/secured-admin")
