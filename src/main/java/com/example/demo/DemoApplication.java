@@ -3,7 +3,7 @@ package com.example.demo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,8 +16,8 @@ public class DemoApplication {
 	}
 
 	@GetMapping("/secured")
-	public String secured(){
-		return SecurityContextHolder.getContext().getAuthentication().getName();
+	public String secured(Authentication authentication){
+		return authentication.getName();
 	}
 
 	@GetMapping("/secured-admin")
