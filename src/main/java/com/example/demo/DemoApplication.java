@@ -3,6 +3,7 @@ package com.example.demo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,7 +17,7 @@ public class DemoApplication {
 
 	@GetMapping("/secured")
 	public String secured(){
-		return "This is secured endpoint";
+		return SecurityContextHolder.getContext().getAuthentication().getName();
 	}
 
 	@GetMapping("/secured-admin")
@@ -27,6 +28,7 @@ public class DemoApplication {
 	
 	@GetMapping("/public")
 	public String pub(){
+		
 		return "This is public endpoint";
 	}
 }
