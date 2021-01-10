@@ -1,5 +1,7 @@
 package com.example.demo.user;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,5 +26,7 @@ public class User {
   private String password;
 
   private String role;
+
+  private LocalDateTime lastUpdated;
   
 }

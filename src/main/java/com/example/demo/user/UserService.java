@@ -1,5 +1,7 @@
 package com.example.demo.user;
 
+import java.time.LocalDateTime;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +25,7 @@ public class UserService {
   public User updateUser(long id, User user) {
     User inDB = userRepository.getOne(id);
     inDB.setDisplayName(user.getDisplayName());
+    inDB.setLastUpdated(LocalDateTime.now());
     return userRepository.save(inDB);
   }
 

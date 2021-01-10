@@ -20,7 +20,7 @@ public class UserController {
   }
 
   @PutMapping("/api/1.0/users/{id}")
-  @PreAuthorize("principal.user.id == #id")
+  @PreAuthorize("@userAuthorizationService.canUpdate(principal.user.id, #id)")
   public User updateUser(@PathVariable long id, @RequestBody User user){
     return this.userService.updateUser(id, user);
   }
