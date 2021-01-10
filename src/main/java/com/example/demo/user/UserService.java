@@ -5,19 +5,25 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
-  
+
   UserRepository userRepository;
 
   PasswordEncoder passwordEncoder;
 
-  public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder){
+  public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
     this.userRepository = userRepository;
     this.passwordEncoder = passwordEncoder;
   }
 
-  public User save(User user){
+  public User save(User user) {
     user.setPassword(this.passwordEncoder.encode(user.getPassword()));
     return this.userRepository.save(user);
+  }
+
+  public User updateUser(long id, User user) {
+    User inDB = userRepository.getOne(id);
+    inDB.setDisplayName(user.getDisplayName());
+    return userRepository.save(inDB);
   }
 
 }
