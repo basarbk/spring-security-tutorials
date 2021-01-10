@@ -1,8 +1,5 @@
 package com.example.demo.user;
 
-import com.example.demo.configuration.AppUser;
-import com.example.demo.configuration.LoggedInUser;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,8 +20,8 @@ public class UserController {
   }
 
   @PutMapping("/api/1.0/users/{id}")
-  @PreAuthorize("#appUser.user.id == #id")
-  public User updateUser(@PathVariable long id, @RequestBody User user, @LoggedInUser AppUser appUser){
+  @PreAuthorize("principal.user.id == #id")
+  public User updateUser(@PathVariable long id, @RequestBody User user){
     return this.userService.updateUser(id, user);
   }
   
