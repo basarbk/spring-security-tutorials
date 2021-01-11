@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.util.Date;
+
 import com.example.demo.configuration.AppUser;
 import com.example.demo.configuration.LoggedInUser;
 
@@ -32,5 +34,10 @@ public class DemoApplication {
 	public String pub(){
 		
 		return "This is public endpoint";
+	}
+
+	@GetMapping("/what-is-the-time")
+	String time(){
+		return new Date().toString();
 	}
 }
